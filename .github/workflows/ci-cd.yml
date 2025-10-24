@@ -54,7 +54,7 @@ jobs:
 
       # 7 Chạy file test trên product service
       - name: Run File Test In Product Service
-        run: docker exec --env-file .env.ci nghiem_product_service npm test
+        run: docker exec --env-file .env.ci duy_product_service npm test
 
       # 6️⃣ Dừng container sau khi test
       - name: Stop containers
@@ -75,7 +75,7 @@ jobs:
       # 3️⃣ Tag Image: Vì rebuild nên nó lại có tên dài
       - name: Tag Built Images to Simple Names
         run: |
-          SERVICES=("nghiem_api_gateway" "nghiem_auth_service" "nghiem_order_service" "nghiem_product_service")
+          SERVICES=("duy_api_gateway" "duy_auth_service" "duy_order_service" "duy_product_service")
 
           for SERVICE in ${SERVICES[@]}; do
             # Tìm tên image đầy đủ (Repository) có chứa tên SERVICE của bạn
@@ -109,7 +109,7 @@ jobs:
           DOCKER_REPO: ${{ secrets.DOCKER_USERNAME }}
           TAG: ${{ github.sha }}
         run: |
-          SERVICES=("nghiem_api_gateway" "nghiem_auth_service" "nghiem_order_service" "nghiem_product_service")
+          SERVICES=("duy_api_gateway" "duy_auth_service" "duy_order_service" "duy_product_service")
 
           for SERVICE in ${SERVICES[@]}; do
             REPO_NAME=$(echo $SERVICE | cut -d'_' -f2-)
