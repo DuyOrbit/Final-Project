@@ -102,6 +102,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          logout: true
 
       # 5️⃣ Tag và Push các Image lên Docker Hub
       - name: Tag and Push Images
